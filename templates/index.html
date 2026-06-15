@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Stock Alert Project{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-copy">
+        <h1>Stock Alert Project</h1>
+        <p class="lead">Chinese stock alerts for busy investors.</p>
+        <p>Track US and Taiwan symbols, monitor RSI/EMA alerts, receive Telegram delivery, and generate concise AI summaries without living inside a charting platform.</p>
+        <div class="actions">
+            <a class="button" href="{{ url_for('register') }}">Start monitoring</a>
+            <a class="button secondary" href="{{ url_for('login') }}">View dashboard</a>
+        </div>
+        <p class="disclaimer">Information only. Not financial advice.</p>
+    </div>
+    <div class="product-panel">
+        <div class="panel-head">
+            <span>Live watchlist</span>
+            <strong>$ {{ subscription_price }}/month</strong>
+        </div>
+        <div class="watch-preview">
+            <div class="watch-row head"><span>Symbol</span><span>Price</span><span>RSI</span><span>Signal</span></div>
+            <div class="watch-row"><span>AAPL</span><span>214.20</span><span>34.8</span><span class="signal hold">HOLD</span></div>
+            <div class="watch-row"><span>TSLA</span><span>181.55</span><span>27.4</span><span class="signal buy">BUY</span></div>
+            <div class="watch-row"><span>NVDA</span><span>144.90</span><span>74.2</span><span class="signal sell">SELL</span></div>
+            <div class="watch-row"><span>2330.TW</span><span>980.00</span><span>52.1</span><span class="signal hold">HOLD</span></div>
+        </div>
+        <div class="status-grid">
+            <div>
+                <span class="status-dot on"></span>
+                <strong>Telegram</strong>
+                <p>Delivery connected</p>
+            </div>
+            <div>
+                <span class="status-dot"></span>
+                <strong>Daily AI Report</strong>
+                <p>Ready after signup</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="value-band">
+    <div>
+        <h2>Built for signal triage</h2>
+        <p>Use a smaller watchlist, clear alert thresholds, and plain-language Chinese summaries to decide what deserves attention.</p>
+    </div>
+    <div>
+        <h2>Subscription-ready</h2>
+        <p>Stripe Checkout, subscription status, local user accounts, Telegram binding, and webhook handling are wired for MVP validation.</p>
+    </div>
+    <div>
+        <h2>Safer positioning</h2>
+        <p>The product reports indicators and risk signals. It avoids promising returns or acting as personalized financial advice.</p>
+    </div>
+</section>
+{% endblock %}

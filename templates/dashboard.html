@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Stock Alert Project{% endblock %}
+{% block content %}
+<section class="dashboard-shell">
+    <div class="dashboard-main">
+        <div class="section-heading">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Monitor your watchlist, alerts, Telegram delivery, and subscription status.</p>
+            </div>
+            <form method="post" action="{{ url_for('billing_checkout') }}">
+                <button class="button" type="submit">Subscribe ${{ subscription_price }}/month</button>
+            </form>
+        </div>
+
+        <form class="inline-form" method="post" action="{{ url_for('add_watchlist_item') }}">
+            <input name="symbol" placeholder="Add symbol, e.g. AAPL" required>
+            <button class="icon-button" type="submit" aria-label="Add symbol">+</button>
+        </form>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                        <th>RSI</th>
+                        <th>EMA</th>
+                        <th>Signal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if rows %}
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row.symbol }}</td>
+                                <td>{% if row.price is not none %}${{ row.price }}{% else %}No data{% endif %}</td>
+                                <td>{{ row.rsi if row.rsi is not none else "-" }}</td>
+                                <td>{{ row.ma if row.ma is not none else "-" }}</td>
+                                <td><span class="signal {{ row.signal|lower }}">{{ row.signal }}</span></td>
+                                <td>
+                                    {% for item in items %}
+                                        {% if item.symbol == row.symbol %}
+                                            <form method="post" action="{{ url_for('delete_watchlist_item', item_id=item.id) }}">
+                                                <button class="text-danger" type="submit">Remove</button>
+                                            </form>
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="empty">No symbols yet. Add one to start monitoring.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <aside class="dashboard-side">
+        <section class="side-block">
+            <h2>Telegram</h2>
+            <p>Status: {% if current_user.telegram_chat_id %}Connected{% else %}Not connected{% endif %}</p>
+            <form method="post" action="{{ url_for('update_telegram') }}">
+                <label>Chat ID
+                    <input name="telegram_chat_id" value="{{ current_user.telegram_chat_id or '' }}" placeholder="8556599126">
+                </label>
+                <button class="button secondary full" type="submit">Save Telegram</button>
+            </form>
+        </section>
+
+        <section class="side-block">
+            <h2>Subscription</h2>
+            <p>Status: <strong>{{ current_user.subscription_status }}</strong></p>
+            <p>Stripe webhook updates this status after checkout.</p>
+        </section>
+
+        <section class="side-block">
+            <h2>Daily AI Report</h2>
+            <form method="post" action="{{ url_for('create_daily_report') }}">
+                <button class="button full" type="submit">Generate report</button>
+            </form>
+            {% if latest_report %}
+                <pre class="report-box">{{ latest_report.content }}</pre>
+            {% else %}
+                <p class="empty">No report yet.</p>
+            {% endif %}
+        </section>
+    </aside>
+</section>
+{% endblock %}
