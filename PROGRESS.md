@@ -35,9 +35,11 @@
 - GitHub 回读确认：远端 `app.py` 和 `templates/dashboard.html` 可读，远端 `.env` 返回 404。
 - 2026-06-17 再次运行 `python -m compileall -q .` 通过。
 - 2026-06-17 再次运行 `python -m unittest discover -s tests -v` 通过，10 个测试 OK。
+- 2026-06-17 已将项目记忆文档上传到 `ahlimosa-gif/Stock-Alert-Project`：`AGENTS.md`、`MEMORY_INDEX.md`、`PROJECT_CONTEXT.md`、`PROGRESS.md`、`DECISIONS.md`、`NEXT_TASKS.md`。
+- 2026-06-17 远端回读确认 `NEXT_TASKS.md`、`PROGRESS.md`、`AGENTS.md` 可读，远端 `.env` 仍为 404。
 
 ## 当前阻塞
 - 无上传阻塞。
 - 后续正式上线前仍需配置生产 MySQL、生产域名、Stripe webhook endpoint、测试/生产 Stripe key 切换策略，并轮换曾在聊天中暴露过的真实密钥。
 - 当前适合 private beta / demo launch，不适合直接公开正式收费上线。
-- 正式收费上线前必须补齐：每用户后台定时 alert worker、订阅权限 gating、Stripe Customer Portal、CSRF 保护、生产部署配置、法律页面和密钥轮换。
+- 正式收费费上线前必须补齐：每用户后台定时 alert worker、订阅权限 gating、Stripe Customer Portal、CSRF 保护、生产部署配置、法律页面和密钥轮换。
