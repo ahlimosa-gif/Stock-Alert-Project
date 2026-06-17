@@ -1,12 +1,12 @@
 # MEMORY_INDEX.md
 
-最后更新：2026-06-15
+最后更新：2026-06-17
 
 ## 当前项目
 - 根目录：`C:\Users\karen\OneDrive\Documents\GitHub\Auto-Fork`
 - 当前主要子项目：`stock_alert_project`
 - 目标远端仓库：`ahlimosa-gif/Stock-Alert-Project`
-- 当前状态：Flask 订阅型 MVP 已本地验证并上传到 GitHub `main`。
+- 当前状态：Flask 订阅型 MVP 和项目记忆文档均已同步到 GitHub `main`。
 
 ## 必读文件
 - `AGENTS.md`：项目协作规则和记忆流程。
@@ -20,5 +20,6 @@
 ## 关键注意
 - `stock_alert_project/.env` 存在真实密钥，只能本地使用，禁止上传或回显。
 - GitHub 已确认 `.env` 未上传，远端回读 `.env` 返回 404。
+- 2026-06-17 已上传 `AGENTS.md`、`MEMORY_INDEX.md`、`PROJECT_CONTEXT.md`、`PROGRESS.md`、`DECISIONS.md`、`NEXT_TASKS.md` 到远端。
 - 当前环境没有系统 `git`、`gh`、`python`；可用 bundled Python：`C:\Users\karen\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`。
 - 本地验证使用临时虚拟环境：`%TEMP%\stock_alert_project_venv_20260615172605`。
