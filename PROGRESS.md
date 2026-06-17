@@ -42,4 +42,4 @@
 - 无上传阻塞。
 - 后续正式上线前仍需配置生产 MySQL、生产域名、Stripe webhook endpoint、测试/生产 Stripe key 切换策略，并轮换曾在聊天中暴露过的真实密钥。
 - 当前适合 private beta / demo launch，不适合直接公开正式收费上线。
-- 正式收费费上线前必须补齐：每用户后台定时 alert worker、订阅权限 gating、Stripe Customer Portal、CSRF 保护、生产部署配置、法律页面和密钥轮换。
+- 正式收费上线前必须补齐：每用户后台定时 alert worker、订阅权限 gating、Stripe Customer Portal、CSRF 保护、生产部署配置、法律页面和密钥轮换。
