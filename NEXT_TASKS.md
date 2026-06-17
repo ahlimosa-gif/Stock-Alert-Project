@@ -10,6 +10,12 @@
 5. 在 Stripe Dashboard 配置 `POST /api/webhook/stripe` 的 webhook endpoint，并使用测试模式完整跑一遍 Checkout。
 
 ## 已上传文件清单
+- `AGENTS.md`
+- `MEMORY_INDEX.md`
+- `PROJECT_CONTEXT.md`
+- `PROGRESS.md`
+- `DECISIONS.md`
+- `NEXT_TASKS.md`
 - `.env.example`
 - `.gitignore`
 - `README.md`
@@ -36,6 +42,7 @@
 - `python -m unittest discover -s tests -v` 通过，10 个测试 OK。
 - 敏感信息扫描通过。
 - GitHub 远端 `.env` 回读为 404，确认未上传。
+- 2026-06-17 项目记忆文档已同步到 GitHub `main`。
 
 ## 可选改进
 - 增加 `--once` CLI 参数，方便只运行一次监控。
