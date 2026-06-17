@@ -4,9 +4,9 @@
 
 ## 最高优先级
 1. 轮换曾在聊天中暴露过的 Telegram、OpenAI、Stripe 密钥。
-2. 增加每用户后台定时 alert worker：读取 `User`、`WatchlistItem`、`telegram_chat_id`，只给 active/trial-allowed 用户发送 Telegram alert。
-3. 增加 subscription gating：明确 trial 规则，限制未付费用户的 watchlist、report、alert 功能。
-4. 为生产环境创建 MySQL 数据库，并把生产 `DATABASE_URL` 写入部署环境变量。
+2. 替换 `.env` / 部署环境中的生产值：`APP_BASE_URL`、真实 MySQL `DATABASE_URL`、`STRIPE_WEBHOOK_SECRET`。
+3. 增加每用户后台定时 alert worker：读取 `User`、`WatchlistItem`、`telegram_chat_id`，只给 active/trial-allowed 用户发送 Telegram alert。
+4. 增加 subscription gating：明确 trial 规则，限制未付费用户的 watchlist、report、alert 功能。
 5. 在 Stripe Dashboard 配置 `POST /api/webhook/stripe` 的 webhook endpoint，并使用测试模式完整跑一遍 Checkout。
 
 ## 已上传文件清单
@@ -43,6 +43,7 @@
 - 敏感信息扫描通过。
 - GitHub 远端 `.env` 回读为 404，确认未上传。
 - 2026-06-17 项目记忆文档已同步到 GitHub `main`。
+- 2026-06-17 本地 `.env` 已补齐缺失 key；剩余问题是生产值尚未替换。
 
 ## 可选改进
 - 增加 `--once` CLI 参数，方便只运行一次监控。
